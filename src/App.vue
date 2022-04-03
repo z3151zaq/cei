@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloTo/>
+    <CHeader />
     <router-view/>
+    <CFooter/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import HelloTo from './components/HelloTo.vue'
-
+import CHeader from './components/CHeader.vue'
+import CFooter from './components/CFooter.vue'
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
-    HelloTo
+    CHeader,
+    CFooter
   }
 }
 </script>
@@ -24,9 +23,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
   background:#f3f3f4;
 }
 </style>
