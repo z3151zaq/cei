@@ -1,6 +1,11 @@
 <template>
-  <div class = 'coursecard'>
-      <img :src="course.previewImgUrl" :alt="course.productName" 
+  <div class ='coursecard' @click="$router.push({
+    path:'/cdetail',
+    query:{
+      id:course.productID
+    }
+  })">
+      <img :src="course.previewImgUrl" :alt="course.productID" 
       style="width: 90%; margin:10px 0px;" >
       <div>{{course.productName}}</div>
         <div class='like'>
@@ -17,7 +22,7 @@
 <script>
 export default {
 name:'CourseCard',
-props:['course']
+props:['course'],
 }
 </script>
 

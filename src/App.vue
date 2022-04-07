@@ -27,4 +27,7 @@ export default {
   color: #2c3e50;
   background:#f3f3f4;
 }
+img{
+    max-width: 100%; 
+}
 </style>
