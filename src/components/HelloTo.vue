@@ -6,7 +6,7 @@
             :to="{
                 name: 'course',
                 params: {
-                    param: path.param,
+                    id: path.id,
                 },
             }"
             >{{ path.param }}
@@ -21,14 +21,14 @@ export default {
         return {
             paths: [
                 {
-                    id: '001',
+                    id: 1,
                     param: '环境执法',
                 },
                 {
-                    id: '002',
+                    id: 2,
                     param: '环境监测',
                 },
-            ]
+            ],
         };
     },
     methods: {

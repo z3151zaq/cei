@@ -8,13 +8,13 @@ export default class Service {
         });
         return result.data.data;
     }
-    static async getCourse() {
+    static async getCourse(parentID) {
         const url = '/api/search_navigation_child_list';
         //const result = await axios.get(url, {headers: getHeader(),});
         const params = {
             type: '',
             classType: '',
-            parentID: 21,
+            parentID,
             seriesID: '',
             pageNo: 1,
             pageSize: 100,
@@ -25,11 +25,24 @@ export default class Service {
         return result.data.data;
     }
 
-    static async getCourseDetail(params) {
+    static async getProductDetail(params) {
         const url = '/api/get_product_detail';
         const result = await axios.get(url, {
             params,
         });
+        return result.data.data;
+    }
+
+    static async getBook(params) {
+        const url = '/api/get_book_list';
+        const result = await axios.get(url, {
+            params,
+        });
+        return result.data.data;
+    }
+    static async searchBookcCategory() {
+        const url = '/api/search_book_category_list';
+        const result = await axios.get(url);
         return result.data.data;
     }
 }

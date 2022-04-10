@@ -50,12 +50,12 @@ export default {
         };
     },
     beforeMount() {
-        Service.getCourseDetail({ productID: this.$route.query.id }).then(
+        Service.getProductDetail({ productID: this.$route.query.id }).then(
             res => (this.detail = res)
         );
     },
     beforeUpdate() {
-        Service.getCourseDetail({ productID: this.$route.query.id }).then(
+        Service.getProductDetail({ productID: this.$route.query.id }).then(
             res => (this.detail = res)
         );
     },
