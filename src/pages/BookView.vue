@@ -11,10 +11,20 @@
         </el-radio-group>
         <br />
         <br />
-        <div class="books-container">
-            <BookCard v-for="book in books" :key="book.productID" :book="book" />
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <div class="books-container">
+                <BookCard v-for="book in books" :key="book.productID" :book="book" />
+            </div>
+            <el-pagination
+                background
+                layout="prev, pager, next"
+                :page-size="20"
+                :total="booksNum"
+                @current-change="changePageNo"
+                hide-on-single-page
+            >
+            </el-pagination>
         </div>
-        <el-pagination background layout="prev, pager, next" :total="1000"> </el-pagination>
     </div>
 </template>
 
@@ -32,13 +42,22 @@ export default {
             books: {},
             category: [],
             selectedCat: '',
+            booksNum: 0,
         };
+    },
+    methods: {
+        changePageNo(pageNo) {
+            this.pageNo = pageNo;
+        },
     },
     mounted() {
         Service.getBook({
             pageNo: this.pageNo,
             pageSize: 20,
-        }).then(res => (this.books = res.rows));
+        }).then(res => {
+            this.books = res.rows;
+            this.booksNum = res.totalRows;
+        });
         Service.searchBookcCategory().then(res => (this.category = res.rows));
     },
     watch: {
@@ -46,19 +65,28 @@ export default {
             Service.getBook({
                 pageNo: this.pageNo,
                 pageSize: 20,
-            }).then(res => (this.books = res.rows));
+            }).then(res => {
+                this.books = res.rows;
+                this.booksNum = res.totalRows;
+            });
         },
         selectedCat() {
             if (this.selectedCat !== '全部')
                 Service.getBook({
                     categoryID: _.find(this.category, { categoryName: this.selectedCat })
                         .categoryID,
-                }).then(res => (this.books = res.rows));
+                }).then(res => {
+                    this.books = res.rows;
+                    this.booksNum = res.totalRows;
+                });
             else {
                 Service.getBook({
                     pageNo: this.pageNo,
                     pageSize: 20,
-                }).then(res => (this.books = res.rows));
+                }).then(res => {
+                    this.books = res.rows;
+                    this.booksNum = res.totalRows;
+                });
             }
         },
     },
@@ -69,5 +97,10 @@ export default {
 .books-container {
     display: flex;
     flex-wrap: wrap;
+}
+.books-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>

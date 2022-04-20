@@ -4,6 +4,7 @@ import CourseDetail from '../pages/CourseDetail';
 import HelloTo from '../components/HelloTo.vue';
 import BookView from '../pages/BookView';
 import BookDetail from '../pages/BookDetail';
+import TeacherView from '../pages/TeacherView';
 
 export default new VueRouter({
     routes: [
@@ -27,6 +28,11 @@ export default new VueRouter({
             name: 'bdetail',
             path: '/bdetail',
             component: BookDetail,
+        },
+        {
+            name: 'teacher',
+            path: '/teacher',
+            component: TeacherView,
         },
         {
             path: '/',
