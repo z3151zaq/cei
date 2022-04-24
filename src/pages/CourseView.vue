@@ -44,7 +44,8 @@ export default {
 .course-container {
     width: 80%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    gap: 10px;
 }
 .banner {
     background-color: #06141a;

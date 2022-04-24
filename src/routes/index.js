@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import CourseView from '../pages/CourseView';
 import CourseDetail from '../pages/CourseDetail';
-import HelloTo from '../components/HelloTo.vue';
+import HomePage from '../pages/HomePage.vue';
 import BookView from '../pages/BookView';
 import BookDetail from '../pages/BookDetail';
 import TeacherView from '../pages/TeacherView';
@@ -36,7 +36,7 @@ export default new VueRouter({
         },
         {
             path: '/',
-            component: HelloTo,
+            component: HomePage,
         },
     ],
 });

@@ -45,4 +45,19 @@ export default class Service {
         const result = await axios.get(url);
         return result.data.data;
     }
+    static async searchTeacherCategoryList() {
+        const url = '/api/search_teacher_category_list';
+        const result = await axios.get(url);
+        return result.data.data;
+    }
+    static async getTeacherList(params) {
+        const url = '/api/get_teacher_list';
+        const result = await axios.get(url, { params });
+        return result.data.data;
+    }
+    static async searchHomeFloorList() {
+        const url = '/api/search_home_floor_list';
+        const result = await axios.get(url);
+        return result.data.data;
+    }
 }

@@ -11,7 +11,6 @@
             }"
             >{{ path.param }}
         </router-link>
-
         <el-carousel trigger="click" height="400px">
             <el-carousel-item v-for="item in 4" :key="item" label="轮播图">
                 <img
@@ -21,18 +20,21 @@
                 />
             </el-carousel-item>
         </el-carousel>
-
+        <AdFloor v-for="floor in floorList" :floor="floor" :key="floor.floorID" />
         <TrainMap />
     </div>
 </template>
 
 <script>
-import TrainMap from './TrainMap.vue';
+import TrainMap from '../components/TrainMap.vue';
+import AdFloor from '@/components/AdFloor/AdFloor.vue';
+import Service from '@/service/Service';
 export default {
-    name: 'HelloTo',
-    components: { TrainMap },
+    name: 'HomePage',
+    components: { TrainMap, AdFloor },
     data() {
         return {
+            floorList: [],
             paths: [
                 {
                     id: 1,
@@ -49,6 +51,9 @@ export default {
         toCourse() {
             this.$router.push('course');
         },
+    },
+    mounted() {
+        Service.searchHomeFloorList().then(res => (this.floorList = res));
     },
 };
 </script>
