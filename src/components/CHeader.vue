@@ -1,13 +1,20 @@
 <template>
-    <div style="display: flex; align-items: center">
-        <el-cascader
-            ref="courseCascader"
-            v-model="value"
-            :options="option"
-            :props="{ expandTrigger: 'hover', checkStrictly: true }"
-            @change="handleChange"
-        >
-        </el-cascader>
+    <div class="header">
+        <img src="../assets/title_png.png" alt="网站logo" class="header-title-png" />
+        <el-dropdown style="margin: 0 20px">
+            <span class="el-dropdown-link">
+                所有课程<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+                <el-cascader-panel
+                    :options="option"
+                    v-model="value"
+                    :props="{ expandTrigger: 'hover', checkStrictly: true }"
+                    @change="handleChange"
+                    ref="courseCascader"
+                ></el-cascader-panel>
+            </el-dropdown-menu>
+        </el-dropdown>
         <el-menu class="el-menu-demo" mode="horizontal">
             <el-menu-item index="1">
                 <router-link to="/"> 首页 </router-link>
@@ -25,8 +32,8 @@
                 <router-link to="/newshome"> VIP畅学 </router-link>
             </el-menu-item>
         </el-menu>
-        <span>下载APP</span>
-        <span>登录/注册</span>
+        <a href="/#/book" style="margin: 0 10px 0 20px">下载APP</a>
+        <a href="/#/teacher " style="margin: 0 20px 0 10px">登录/注册</a>
         <el-button type="primary" round>查询证书</el-button>
     </div>
 </template>
@@ -43,6 +50,7 @@ export default {
     },
     methods: {
         handleChange(value) {
+            console.log(value);
             if (value.length === 3)
                 this.$router.push({
                     path: '/cdetail',
@@ -92,5 +100,18 @@ export default {
 <style scoped>
 a {
     text-decoration: none;
+}
+* {
+    font-size: 18px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.header-title-png {
+    margin: 0 20px;
+    height: 30px;
 }
 </style>

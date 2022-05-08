@@ -10,11 +10,37 @@
                     :key="image.advertisementID"
                 />
             </el-col>
-            <el-col :span="12">
-                <div>{{ floor.floorID }}</div>
-            </el-col>
-            <el-col :span="6">
-                <div>{{ floor.floorID }}</div>
+            <el-col :span="18" class="child-floor">
+                <div class="center-container">
+                    <CourseRecom :floorID="floor.floorID" :floorName='floor.floorName'/>
+                </div>
+                <div class="side-container">
+                    <div>
+                        <div class="side-title">
+                            <div style="width: 10px; height: 10px; background-color: blue"></div>
+                            <div>热门资讯</div>
+                            <a href="/#/newshome">更多&gt;</a>
+                        </div>
+                        <div
+                            v-for="info in floor.informationList.slice(0, 2)"
+                            :key="info.informationID"
+                        >
+                            {{ info.introduce }}
+                            {{ info.updateTime }}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="side-title">
+                            <div style="width: 10px; height: 10px; background-color: blue"></div>
+                            <div>热门问答</div>
+                            <a href="/#/teacher">更多&gt;</a>
+                        </div>
+                        <div v-for="qa in floor.askList.slice(0, 1)" :key="qa.answerID">
+                            {{ qa.title }}
+                            <div v-html="qa.answerText"></div>
+                        </div>
+                    </div>
+                </div>
             </el-col>
         </el-row>
 
@@ -32,8 +58,12 @@
 </template>
 
 <script>
+import CourseRecom from './CourseRecom';
 export default {
     name: 'AdFloor',
+    components: {
+        CourseRecom,
+    },
     props: ['floor'],
 };
 </script>
@@ -43,8 +73,21 @@ export default {
     margin: 10px auto;
     width: 1000px;
 }
+.child-floor {
+    display: flex;
+}
 img {
     border-radius: 10px;
     width: auto;
+}
+.center-container {
+    width: 67%;
+}
+.side-container {
+    width: 33%;
+}
+.side-title {
+    display: flex;
+    align-items: center;
 }
 </style>

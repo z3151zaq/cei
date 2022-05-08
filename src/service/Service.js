@@ -60,4 +60,14 @@ export default class Service {
         const result = await axios.get(url);
         return result.data.data;
     }
+    static async searchHomeFloorProductWebRecomList(params) {
+        const url = '/api/search_home_floor_product_web_recom_list';
+        const result = await axios.get(url, { params });
+        return result.data.data;
+    }
+    static async searchHomeFloorProductList(params) {
+        const url = '/api/search_home_floor_product_list';
+        const result = await axios.get(url, { params });
+        return result.data.data;
+    }
 }

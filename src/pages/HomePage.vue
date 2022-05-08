@@ -1,16 +1,5 @@
 <template>
     <div>
-        <router-link
-            v-for="path in paths"
-            :key="path.id"
-            :to="{
-                name: 'course',
-                params: {
-                    id: path.id,
-                },
-            }"
-            >{{ path.param }}
-        </router-link>
         <el-carousel trigger="click" height="400px">
             <el-carousel-item v-for="item in 4" :key="item" label="轮播图">
                 <img
@@ -20,8 +9,10 @@
                 />
             </el-carousel-item>
         </el-carousel>
-        <AdFloor v-for="floor in floorList" :floor="floor" :key="floor.floorID" />
-        <TrainMap />
+        <div style="width: 80%; margin: 0 auto">
+            <AdFloor v-for="floor in floorList" :floor="floor" :key="floor.floorID" />
+            <TrainMap />
+        </div>
     </div>
 </template>
 
@@ -76,7 +67,7 @@ div {
 }
 .carousel-img {
     height: 100%;
-    max-width: 1500px;
+    max-width: 100%;
     overflow: hidden;
     margin: 0 auto;
 }
